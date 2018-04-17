@@ -1,14 +1,12 @@
-import React, { PureComponent } from 'react';
+import React,{Component} from 'react';
 import { Text, View, FlatList, StyleSheet, Easing, TouchableOpacity } from 'react-native';
-
 import { SharedElement } from 'react-native-motion';
+import ListItem  from './TestItem';
+import data from './TestData';
+import Toolbar from '../src/screens/List/Toolbar';
 
-import Toolbar from './Toolbar';
-import BottomBar from './BottomBar';
-import { ListItem } from '../../components';
-import data from '../../data/data';
+export default class TestList extends Component {
 
-class List extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -21,7 +19,7 @@ class List extends PureComponent {
 
     onItemPress(item);
 
-    this.sharedElementRefs[item.name].moveToDestination();
+    this.sharedElementRefs[item.flower].moveToDestination();
   };
   onMoveToDestinationWillStart = () => {
     this.setState({ opacityOfSelectedItem: 0 });
@@ -38,14 +36,14 @@ class List extends PureComponent {
       </View>
     );
   };
+
   renderItem = ({ item }) => {
     const { opacityOfSelectedItem } = this.state;
     const { selectedItem } = this.props;
 
-    const isHidden = selectedItem && selectedItem.name !== item.name;
-    const isSelected = selectedItem && selectedItem.name === item.name;
-    const id = item.name;
-
+    const isHidden = selectedItem && selectedItem.flower !== item.flower;
+    const isSelected = selectedItem && selectedItem.flower === item.flower;
+    const id = item.flower;
     return (
       <SharedElement
         easing={Easing.in(Easing.back())}
@@ -69,35 +67,31 @@ class List extends PureComponent {
           />
         </View>
       </SharedElement>
-    );
-  };
-  render() {
-    const { opacityOfSelectedItem } = this.state;
-    const { selectedItem, phase } = this.props;
-
-    return (
-      <View style={styles.container}>
-        <Toolbar
-          isHidden={phase !== 'phase-0'}
-          onBackPress={this.onBackPressed}
-        />
-        <FlatList
-          data={data}
-          dataExtra={{ phase, opacityOfSelectedItem }}
-          keyExtractor={item => item.name}
-          renderItem={this.renderItem}
-        />
-        <BottomBar isHidden={phase !== 'phase-0'} />
-      </View>
-    );
+    )
+  }
+    render() {
+      const { opacityOfSelectedItem } = this.state;
+      const { selectedItem, phase } = this.props;
+      return (
+          <View style={styles.container}>
+            <Toolbar
+              isHidden={phase !== 'phase-0'}
+              onBackPress={this.onBackPressed}
+            />
+            <FlatList
+              data={data}
+              dataExtra={{ phase, opacityOfSelectedItem }}
+              keyExtractor={item => item.flower}
+              renderItem={this.renderItem}
+            />
+          </View>
+      );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'blue'
+    // backgroundColor: 'blue'
   },
 });
-
-export default List;

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 150,
-    backgroundColor: '#008dff',
+    backgroundColor: '#008dff',//'biru'
   },
 });
 

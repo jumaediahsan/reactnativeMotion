@@ -1,46 +1,34 @@
-import React from 'react';
-import { InteractionManager, StyleSheet, Text, View , TouchableOpacity} from 'react-native';
+import React, { Component } from "react";
+import { View, Text, FlatList, ActivityIndicator, StyleSheet, InteractionManager } from "react-native";
+import { List, ListItem, SearchBar } from "react-native-elements";
 import { SharedElementRenderer } from 'react-native-motion';
+import TestList from './TestList';
+import TestDetail from './TestDetail';
+import ToolbarBackground from '../src/screens/Detail/ToolbarBackground';
 
-import List from './src/screens/List/List';
-import Detail from './src/screens/Detail/Detail';
-import ToolbarBackground from './src/screens/Detail/ToolbarBackground';
-
-export default class App extends React.Component {
+class Testing extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedItem: null,
-      // phase of animation
-      // phase-0:
-      // default
-      //
-      // phase-1:
-      // hide list toolbar, hide list bottom bar, show toolbar background and move item
-      //
-      // phase-2:
-      // show detail toolbar, show detail bottom bar, show details of item
-      //
-      // phase-3
-      // hide details of item
-      //
-      // phase-4
-      // hide detail toolbar, hide detail bootom bar, move item back to scrool view
-      phase: 'phase-0',
+      onSelectedItem: null,
+      phase: 'phase-0'
     };
   }
+
   onItemPressed = item => {
     this.setState({
       phase: 'phase-1',
       selectedItem: item,
     });
   };
+
   onBackPressed = () => {
     this.setState({
       phase: 'phase-3',
     });
   };
+
   onSharedElementMovedToDestination = () => {
     InteractionManager.runAfterInteractions(() => {
       this.setState({
@@ -62,12 +50,12 @@ export default class App extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <List
+        <TestList
           selectedItem={selectedItem}
           onItemPress={this.onItemPressed}
           phase={phase}
         />
-        <Detail
+        <TestDetail
           phase={phase}
           selectedItem={selectedItem}
           onBackPress={this.onBackPressed}
@@ -88,7 +76,6 @@ export default class App extends React.Component {
       goBackRequested,
       phase,
     } = this.state;
-
     return (
       <SharedElementRenderer>
         <View style={styles.container}>
@@ -98,6 +85,7 @@ export default class App extends React.Component {
           {this.renderPage()}
         </View>
       </SharedElementRenderer>
+
     );
   }
 }
@@ -105,6 +93,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor:'blue'
+    // backgroundColor:'tomato'
   },
 });
+
+export default Testing;

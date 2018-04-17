@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import Button from './Button';
 import { Row } from '../../components';
-import { getPlatformElevation } from '../../utils';
+import { getPlatformElevation } from '../../utils'; //sama ini pun gak dipake
 
 class BottomButtons extends PureComponent {
   render() {

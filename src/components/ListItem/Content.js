@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import Row from '../Row';
-import { getPlatformElevation } from '../../utils';
+import { getPlatformElevation } from '../../utils'; //gak dipake apa apa 
 
 class Content extends PureComponent {
   render() {
