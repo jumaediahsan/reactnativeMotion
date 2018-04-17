@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import { Text, View, FlatList, StyleSheet, Easing, TouchableOpacity } from 'react-native';
 import { SharedElement } from 'react-native-motion';
+
 import ListItem  from './TestItem';
 import data from './TestData';
 import Toolbar from '../src/screens/List/Toolbar';
@@ -44,6 +45,7 @@ export default class TestList extends Component {
     const isHidden = selectedItem && selectedItem.flower !== item.flower;
     const isSelected = selectedItem && selectedItem.flower === item.flower;
     const id = item.flower;
+
     return (
       <SharedElement
         easing={Easing.in(Easing.back())}
@@ -74,10 +76,10 @@ export default class TestList extends Component {
       const { selectedItem, phase } = this.props;
       return (
           <View style={styles.container}>
-            <Toolbar
+            {/*<Toolbar
               isHidden={phase !== 'phase-0'}
               onBackPress={this.onBackPressed}
-            />
+            />*/}
             <FlatList
               data={data}
               dataExtra={{ phase, opacityOfSelectedItem }}

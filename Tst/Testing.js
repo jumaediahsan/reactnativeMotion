@@ -11,7 +11,7 @@ class Testing extends Component {
     super(props);
 
     this.state = {
-      onSelectedItem: null,
+      selectedItem: null,
       phase: 'phase-0'
     };
   }

@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'native-base';
 
 import { Row } from '../../components';
-import translateAndOpacity from '../../animations/translateAndOpacity';
+// import translateAndOpacity from '../../animations/translateAndOpacity';
 
 class Toolbar extends PureComponent {
   render() {
@@ -57,4 +57,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default translateAndOpacity(Toolbar);
+export default Toolbar;
+// export default translateAndOpacity(Toolbar);

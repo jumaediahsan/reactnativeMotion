@@ -4,7 +4,7 @@ import { ScaleAndOpacity } from 'react-native-motion';
 import { getPlatformElevation } from '../src/utils';
 import Content from './Content';
 
-export default class ListItem extends Component {
+export default class TestItem extends Component {
 
   onPressed = event => {
     const { onPress, item } = this.props;

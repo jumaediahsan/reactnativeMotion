@@ -9,10 +9,10 @@ import {
 import { Icon } from 'native-base';
 
 import { Row } from '../../components';
-import translateAndOpacity from '../../animations/translateAndOpacity';
+// import translateAndOpacity from '../../animations/translateAndOpacity';
 
 class Toolbar extends PureComponent {
-  
+
   renderDetail() {
     const { opacityValue, translateY } = this.state;
     const { onBackPress } = this.props;
@@ -101,4 +101,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default translateAndOpacity(Toolbar);
+export default Toolbar;
+// export default translateAndOpacity(Toolbar);

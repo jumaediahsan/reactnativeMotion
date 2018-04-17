@@ -44,7 +44,7 @@ export default class TestDetail extends Component {
     }
     return(
       <TranslateYAndOpacity isHidden={phase !== 'phase-2'} delay={56 * delay}>
-        <View style={{flex: 1}}>
+        <View style={styles.itemContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.titleText}>{item.name}</Text>
           </View>
@@ -70,10 +70,10 @@ export default class TestDetail extends Component {
       }
       return (
           <View style={styles.container}>
-            <TestBackDetail isHidden={phase === 'phase-3'} onBackPress={onBackPress}/>
+            {/*<TestBackDetail isHidden={phase === 'phase-3'} onBackPress={onBackPress}/>*/}
             <SharedElement
               ref={node => (this.sharedElementRef = node)}
-              sourceId={selectedItem.name}
+              sourceId={selectedItem.flower}
               easing={Easing.in(Easing.back())}
               onMoveToDestinationDidFinish={this.onMoveToDestinationDidFinish}
               onMoveToSourceWillStart={this.onMoveToSourceWillStart}

@@ -56,5 +56,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
+// export default TestBackDetail;
 export default translateAndOpacity(TestBackDetail);
